@@ -1,0 +1,27 @@
+/* You can add global styles to this file, and also import other style files */
+
+.volume-component {
+  display: flex;
+}
+
+.volume-component button {
+  background: none;
+  width: 50px;
+  height: 25px;
+  margin: 0 4px;
+}
+
+.volume-component .volume {
+  height: 25px;
+  box-sizing: border-box;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.volume-component .indicator {
+  transition: all .5s;
+  border-radius: 5px;
+  height: 23px;
+  background: firebrick;
+  box-sizing: border-box;
+}

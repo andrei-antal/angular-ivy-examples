@@ -1,0 +1,7 @@
+<div class="volume-component">
+  <button (click)="turnDown()">DOWN</button>
+  <div class="volume" [style.width.px]="maxVolume">
+    <div class="indicator" [style.width.px]="volume"></div>
+  </div>
+  <button (click)="turnUp()">UP</button>
+</div>
