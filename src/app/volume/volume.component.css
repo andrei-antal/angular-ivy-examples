@@ -1,4 +1,4 @@
-.volume-component button {
+/*button {
   display: block;
   margin: 16px 0;
   background: none;
@@ -22,7 +22,7 @@
   position: relative;
 }
 
-.volume-component .indicator {
+.indicator {
   background: #f20505;
   height: 100%;
   transition: 0.4s;
@@ -31,7 +31,7 @@
   box-sizing: border-box;
 }
 
-.volume-component .text {
+.text {
   font-family: sans-serif;
   color: #3726a6;
   top: 3px;
@@ -40,4 +40,4 @@
   font-size: 1rem;
   position: absolute;
   box-sizing: border-box;
-}
+} */

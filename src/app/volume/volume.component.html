@@ -1,0 +1,8 @@
+<div class="volume-component">
+  <button (click)="turnDown()">DOWN</button>
+  <div class="volume" [style.width.px]="maxVolume">
+    <div class="indicator" [style.width.px]="volume"></div>
+    <span class="text">{{ (volume / maxVolume) * 100 }}%</span>
+  </div>
+  <button (click)="turnUp()">UP</button>
+</div>
