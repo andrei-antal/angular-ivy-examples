@@ -5,6 +5,8 @@ import {
   ɵrenderComponent,
   ɵɵdirectiveInject,
   INJECTOR,
+  ɵdetectChanges,
+  ɵmarkDirty,
 } from '@angular/core';
 
 @Component({
@@ -18,11 +20,17 @@ export class AppComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    const injector = ɵɵdirectiveInject(INJECTOR);
-    const comp = ɵrenderComponent(VolumeComponent, {
-      host: 'volume',
-      injector,
-    });
-    console.log(comp);
+    // const injector = ɵɵdirectiveInject(INJECTOR);
+    // const comp = ɵrenderComponent(VolumeComponent, {
+    //   host: 'volume',
+    //   injector,
+    // });
+    // console.log(comp);
+  }
+
+  changeTitle() {
+    // ɵmarkDirty(this);
+    this.title = 'New title';
+    // ɵdetectChanges(this);
   }
 }

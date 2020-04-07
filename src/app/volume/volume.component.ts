@@ -6,6 +6,9 @@ import {
   Output,
   EventEmitter,
   ɵdetectChanges,
+  ChangeDetectionStrategy,
+  ɵmarkDirty,
+  ChangeDetectorRef,
 } from '@angular/core';
 import { DecimalPipe } from '@angular/common';
 
@@ -13,6 +16,7 @@ import { DecimalPipe } from '@angular/common';
   selector: 'app-volume',
   templateUrl: './volume.component.html',
   styleUrls: ['./volume.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class VolumeComponent implements OnInit {
   @Input() public volume = 40;
@@ -23,25 +27,27 @@ export class VolumeComponent implements OnInit {
   constructor(private settingsService: SettingsService) {}
 
   ngOnInit(): void {
-    // const interval = setInterval(() => {
-    //   this.volume += this.step;
-    // }, 1000);
-    // setTimeout(() => {
-    //   clearInterval(interval);
-    // }, 3000);
+    const interval = setInterval(() => {
+      this.volume += this.step;
+      console.log('turn up');
+      ɵmarkDirty(this);
+    }, 1000);
+    setTimeout(() => {
+      clearInterval(interval);
+    }, 3000);
   }
 
   public turnUp(): void {
     const newVolume = this.volume + this.step;
     this.volume = newVolume > this.maxVolume ? this.maxVolume : newVolume;
     this.volumeChange.emit(this.volume);
-    ɵdetectChanges(this);
+    ɵmarkDirty(this);
   }
 
   public turnDown(): void {
     const newVolume = this.volume - this.step;
     this.volume = newVolume < 0 ? 0 : newVolume;
     this.volumeChange.emit(this.volume);
-    ɵdetectChanges(this);
+    ɵmarkDirty(this);
   }
 }
