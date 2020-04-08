@@ -1,6 +1,5 @@
-<h1>
+<h1 *ngIf="condition">
   {{ title }}
-  <volume #vol></volume>
+  <app-volume></app-volume>
 </h1>
-<button (click)="changeTitle()">Change title</button>
-<button (click)="loadComponent()">Load component</button>
+<button (click)="toggle()">Toggle</button>
