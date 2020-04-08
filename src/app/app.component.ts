@@ -5,8 +5,10 @@ import {
   ɵrenderComponent,
   ɵɵdirectiveInject,
   INJECTOR,
-  ɵdetectChanges,
-  ɵmarkDirty,
+  ComponentFactoryResolver,
+  ViewChild,
+  ViewContainerRef,
+  Injector,
 } from '@angular/core';
 
 @Component({
@@ -17,7 +19,11 @@ import {
 export class AppComponent implements OnInit {
   title = 'Turn up the volume, v9 style';
   condition = true;
-  constructor() {}
+  @ViewChild('vol', { read: ViewContainerRef }) vol: ViewContainerRef;
+  constructor(
+    // private cfr: ComponentFactoryResolver,
+    private injector: Injector
+  ) {}
 
   ngOnInit() {
     // const injector = ɵɵdirectiveInject(INJECTOR);
@@ -32,5 +38,18 @@ export class AppComponent implements OnInit {
     // ɵmarkDirty(this);
     this.title = 'New title';
     // ɵdetectChanges(this);
+  }
+
+  async loadComponent() {
+    const { VolumeComponent: component } = await import(
+      './volume/volume.component'
+    );
+    // const factory = this.cfr.resolveComponentFactory(component);
+    // const comp = this.vol.createComponent(factory, 0, this.injector);
+    // comp.changeDetectorRef.detectChanges();
+    ɵrenderComponent(component, {
+      host: this.vol.element.nativeElement,
+      injector: this.injector,
+    });
   }
 }

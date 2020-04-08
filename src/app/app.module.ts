@@ -6,7 +6,7 @@ import { VolumeComponent } from './volume/volume.component';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  declarations: [AppComponent, VolumeComponent],
+  declarations: [AppComponent],
   imports: [BrowserModule, HttpClientModule],
   providers: [],
   schemas: [NO_ERRORS_SCHEMA],
